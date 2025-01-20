@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Imaginaire - Articles</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f9;
+        }
+
+        header {
+            background: #333;
+            color: #fff;
+            padding: 1rem 0;
+            border: none;
+            cursor: pointer;
+        }
+
+        header nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 20px;
+
+        }
+
+        header h1 {
+            font-size: 1.5rem;
+        }
+
+        header ul {
+            list-style: none;
+            display: flex;
+            gap: 1rem;
+        }
+
+        header ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        header ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .section {
+            padding: 2rem 1rem;
+            margin: auto;
+            max-width: 1200px;
+            background: #fff;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            margin-bottom: 1rem;
+            font-size: 2rem;
+            color: #444;
+        }
+
+        .post {
+            margin-bottom: 1.5rem;
+        }
+
+        .post h3 {
+            font-size: 1.25rem;
+            color: #555;
+        }
+
+        .post a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .post a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem 0;
+            background: #333;
+            color: #fff;
+        }
+
+             /* Style The Dropdown Button */
+         .dropbtn {
+             background-color: rgba(0, 0, 0, 0.2);
+             color: white;
+             padding: 16px;
+             font-size: 16px;
+             border: none;
+             cursor: pointer;
+         }
+
+        /* The container <div> - needed to position the dropdown content */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Dropdown Content (Hidden by Default) */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        /* Links inside the dropdown */
+        .dropdown-content a {
+            color: rgba(0, 0, 0, 0.2);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        /* Change color of dropdown links on hover */
+        .dropdown-content a:hover {background-color: #f1f1f1}
+
+        /* Show the dropdown menu on hover */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Change the background color of the dropdown button when the dropdown content is shown */
+        .dropdown:hover .dropbtn {
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+
+    </style>
+</head>
+<body>
+<header>
+    <ul>
+        <li><a href="posts.html">Blog</a></li>
+        <li><a href="news.asp"></a></li>
+        <div class="dropdown">
+            <button class="header">Dropdown</button>
+            <div class="dropdown-content">
+                <a href="technologie.html" >Technologies</a>
+                <a href="sante.html">Santé</a>
+                <a href="voyage.html">Voyage</a>
+                <a href="cuisine.html">Cuisine</a>
+            </div>
+        </div>
+        <li><a href="A propos">About</a></li>
+    </ul>
+</header>
+
+<main>
+    <section id="posts" class="section">
+        <h2>Articles</h2>
+        <article class="post">
+            <h3>Thème : Technologie</h3>
+            <p>Découvrez les dernières tendances en intelligence artificielle et comment elles transforment notre quotidien.</p>
+            <a href="technologie.html">Lire plus</a>
+        </article>
+        <article class="post">
+            <h3>Thème : Voyage</h3>
+            <p>Partez à la découverte des 10 destinations les plus prisées pour 2025.</p>
+            <a href="voyage.html">Lire plus</a>
+        </article>
+        <article class="post">
+            <h3>Thème : Cuisine</h3>
+            <p>Apprenez à préparer des plats gourmands avec des ingrédients simples et locaux.</p>
+            <a href="cuisine.html">Lire plus</a>
+        </article>
+        <article class="post">
+            <h3>Thème : Santé</h3>
+            <p>Adoptez de nouvelles habitudes pour améliorer votre bien-être mental et physique.</p>
+            <a href="sante.html">Lire plus</a>
+        </article>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2025 Blog Imaginaire. Tous droits réservés.</p>
+</footer>
+</body>
+</html>

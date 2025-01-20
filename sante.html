@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Santé - Blog Imaginaire</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f9;
+        }
+
+        header {
+            background: #333;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        main {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: auto;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #444;
+            margin-bottom: 1rem;
+        }
+
+        ul {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+
+        ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem 0;
+            background: #333;
+            color: #fff;
+            margin-top: 2rem;
+        }
+
+        .form-container {
+            margin-top: 2rem;
+            padding: 1rem;
+            border-top: 1px solid #ddd;
+        }
+
+        .form-container label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-container input, .form-container textarea, .form-container button {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .form-container button {
+            background-color: #333;
+            color: white;
+            cursor: pointer;
+        }
+
+        .form-container button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Santé</h1>
+</header>
+<main>
+
+    <h2>Conseils pour une vie saine</h2>
+    <div id="content-section">
+        <div id="content-sectio">
+            <div class="content-item">
+                <h3>1. Alimentation équilibrée</h3>
+                <p>Mangez varié et coloré : privilégiez les fruits, légumes, et protéines maigres. Limitez les sucres rapides et les graisses saturées.</p>
+            </div>
+            <div class="content-item">
+                <h3>2. Activité physique</h3>
+                <p>Essayez de pratiquer au moins 30 minutes d'exercice quotidien pour renforcer votre corps et votre esprit. Des activités simples comme la marche rapide ou le vélo sont excellentes.</p>
+            </div>
+            <div class="content-item">
+                <h3>3. Bien-être mental</h3>
+                <p>La méditation, le yoga et les moments de détente sont essentiels pour réduire le stress et améliorer votre qualité de vie.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-container">
+        <h2>Ajouter un nouveau conseil</h2>
+        <form id="add-content-form">
+            <label for="title">Titre :</label>
+            <input type="text" id="title" name="title" placeholder="Titre du conseil" required>
+            <label>Description :</label>
+            <textarea id="content-input" name="content" rows="4" placeholder="Description du conseil" required></textarea>
+            <button type="submit">Ajouter</button>
+        </form>
+    </div>
+    <a href="posts.html">Retour aux articles</a>
+</main>
+<footer>
+    <p>&copy; 2025 Blog Imaginaire. Tous droits réservés.</p>
+</footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const form = document.getElementById('add-content-form');
+        const contentSection = document.getElementById('content-section');
+
+        // Données initiales
+        const initialData = [
+            { title: "Alimentation équilibrée", description: "Mangez varié et coloré : privilégiez les fruits, légumes, et protéines maigres. Limitez les sucres rapides et les graisses saturées." },
+            { title: "Activité physique", description: "Essayez de pratiquer au moins 30 minutes d'exercice quotidien pour renforcer votre corps et votre esprit. Des activités simples comme la marche rapide ou le vélo sont excellentes." },
+            { title: "Bien-être mental", description: "La méditation, le yoga et les moments de détente sont essentiels pour réduire le stress et améliorer votre qualité de vie." }
+        ];
+
+        // Fonction pour charger ou initialiser les données dans localStorage
+        const loadContent = () => {
+            let storedContent = localStorage.getItem('healthPosts');
+            let posts = storedContent ? JSON.parse(storedContent) : [];
+
+            // Ajouter les données initiales uniquement si elles n'existent pas
+            if (posts.length === 0) {
+                posts = [...initialData];
+                localStorage.setItem('healthPosts', JSON.stringify(posts));
+            }
+
+            posts.forEach(post => {
+                addPostToDOM(post.title, post.description);
+            });
+        };
+
+        // Fonction pour sauvegarder les données dans localStorage
+        const saveContent = (title, description) => {
+            const storedContent = localStorage.getItem('healthPosts');
+            const posts = storedContent ? JSON.parse(storedContent) : [];
+            posts.push({ title, description });
+            localStorage.setItem('healthPosts', JSON.stringify(posts));
+        };
+
+        // Fonction pour ajouter un post au DOM
+        const addPostToDOM = (title, description) => {
+            const newContent = document.createElement('div');
+            newContent.classList.add('content-item');
+            newContent.innerHTML = `<h3>${title}</h3><p>${description}</p>`;
+            contentSection.appendChild(newContent);
+        };
+
+        // Chargement initial des données
+        loadContent();
+
+        // Gestion de l'événement de soumission du formulaire
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const title = document.getElementById('title').value.trim();
+            const description = document.getElementById('content-input').value.trim();
+
+            if (title && description) {
+                addPostToDOM(title, description);
+                saveContent(title, description);
+                form.reset();
+            } else {
+                alert("Veuillez remplir tous les champs !");
+            }
+        });
+    });
+</script>
+</body>
+</html>
+
